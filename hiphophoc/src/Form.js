@@ -15,6 +15,11 @@ class Forma extends Component {
     };
   }
 
+  onSubmit = async event => {
+    event.preventDefault();
+    this.setState;
+  }
+
   render() {
     return (
       <Container style={{ marginTop: 20 }}>
@@ -23,8 +28,15 @@ class Forma extends Component {
               <Grid.Column width={8}>
                 <Form>
                   <Form.Input
+                    className="form-name"
                     placeholder="name"
                   />
+                  <Form.Input
+                    placeholder="email"
+                  />
+                  <Button type="submit" onClick={this.onSubmit}>
+                  Submit
+                </Button>
                 </Form>
               </Grid.Column>
           </Grid.Row>

@@ -28,11 +28,18 @@ class Forma extends Component {
               <Grid.Column width={8}>
                 <Form>
                   <Form.Input
-                    className="form-name"
+                    className="form"
                     placeholder="name"
+                    value={this.state.name}
+                    onChange={event => this.setState({ name: event.target.value })}
                   />
+
                   <Form.Input
+                    className="form"
                     placeholder="email"
+                    input="email"
+                    value={this.state.email}
+                    onChange={event => this.setState({ email: event.target.value })}
                   />
                   <Button type="submit" onClick={this.onSubmit}>
                   Submit

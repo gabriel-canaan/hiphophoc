@@ -18,6 +18,7 @@ class Forma extends Component {
   onSubmit = async event => {
     event.preventDefault();
     this.setState;
+
   }
 
   render() {
@@ -33,7 +34,34 @@ class Forma extends Component {
                     value={this.state.name}
                     onChange={event => this.setState({ name: event.target.value })}
                   />
+                  <Grid divided="vertically">
+                  <Grid.Row columns={3}>
+                    <Grid.Column>
+                      <Form.Input
+                        placeholder="dd"
+                        required
+                        value={this.state.dd}
+                        onChange={event => this.handleAgeFieldChange("dd", event)}
+                      />
+                    </Grid.Column>
 
+                    <Grid.Column>
+                      <Form.Input
+                        placeholder="mm"
+                        value={this.state.mm}
+                        onChange={event => this.handleAgeFieldChange("mm", event)}
+                      />
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Form.Input
+                        placeholder="yyyy"
+                        value={this.state.yyyy}
+                        onChange={event => this.handleAgeFieldChange("yyyy", event)}
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
                   <Form.Input
                     className="form"
                     placeholder="email"

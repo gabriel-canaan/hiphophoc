@@ -26,8 +26,8 @@ test('onPress gets called with the right thing', () => {
   simulatePresses(handleAgeFieldChange);
   expect(handleAgeFieldChange).toBeCalledWith(
     expect.objectContaining({
-      field: expect.any(Number),
-      event: expect.any(Number),
+      x: expect.any(Number),
+      y: expect.any(Number),
     }),
   );
 });

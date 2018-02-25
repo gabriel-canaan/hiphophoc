@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form,Button,Input,Grid,Container, Card } from "semantic-ui-react";
 import ageCalculator, { AgeFromDate } from "age-calculator";
+var getAge = require('get-age');
 
 class Forma extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class Forma extends Component {
 
 
   componentWillUpdate(nextProps, nextState) {
-     console.log(nextState);
      if (nextState.dd && nextState.mm && nextState.yyyy) {
        if (nextState.age !== this.state.age || this.state.age === "") {
          this.setState({
@@ -41,6 +41,12 @@ class Forma extends Component {
     let ageFromDate = new AgeFromDate(new Date(yyyy, mm, dd)).age;
     return ageFromDate;
   };
+
+
+//   calculateAge = (yyyy, mm, dd) => {
+//     let getAge = new getAge(yyyy-mm-dd);
+//     return getAge;
+// }
 
 
   handleAgeFieldChange = (field, event) => {

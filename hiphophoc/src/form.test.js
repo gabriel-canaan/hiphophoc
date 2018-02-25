@@ -1,19 +1,9 @@
-// import React from 'react';
-// import Form from './Form'
-// import Adapter from 'enzyme-adapter-react-15';
-// import { mount, shallow } from 'enzyme';
-//
-// test('form renders the text inside it', () => {
-//   const Form = { placeholder: name };
-//   const wrapper = mount(
-//     <Forma Form={Form} />
-//   );
-//   const p = wrapper.find('form');
-//   expect(p.text()).toBe('name');
-// });
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import configure from './setupTests'
 import Forma from './Form';
+
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -21,10 +11,18 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
+
+
+it('renders name', () => {
+  const wrapper = shallow(<Forma />);
+  const name = <Form.Input>{this.state.name}</Form.Input>;
+  expect(wrapper).toContainReact(name)
+});
+
 test('onPress gets called with the right thing', () => {
-  const handleAgeFieldChange = jest.fn();
-  simulatePresses(handleAgeFieldChange);
-  expect(handleAgeFieldChange).toBeCalledWith(
+  const onSubmit = jest.fn();
+  simulatePresses(onSubmit);
+  expect(onSubmit).toBeCalledWith(
     expect.objectContaining({
       x: expect.any(Number),
       y: expect.any(Number),

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form,Button,Input,Grid,Container, Card } from "semantic-ui-react";
+import ageCalculator, { AgeFromDate } from "age-calculator";
 
 class Forma extends Component {
   constructor(props) {
@@ -15,15 +16,37 @@ class Forma extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState();
+  };
+
+
+  componentWillUpdate(nextProps, nextState) {
+     console.log(nextState);
+     if (nextState.dd && nextState.mm && nextState.yyyy) {
+       if (nextState.age !== this.state.age || this.state.age === "") {
+         this.setState({
+           age: this.calculateAge(nextState.yyyy, nextState.mm, nextState.dd)
+         });
+       }
+     }
+   }
+
   onSubmit = async event => {
     event.preventDefault();
     this.setState;
-  }
+  };
+
+  calculateAge = (yyyy, mm, dd) => {
+    let ageFromDate = new AgeFromDate(new Date(yyyy, mm, dd)).age;
+    return ageFromDate;
+  };
+
 
   handleAgeFieldChange = (field, event) => {
-  event.preventDefault();
-  this.setState({ [field]: event.target.value });
-};
+    event.preventDefault();
+    this.setState({ [field]: event.target.value });
+  };
 
   render() {
     return (
@@ -69,7 +92,7 @@ class Forma extends Component {
                   <Form.Input
                     className="form"
                     placeholder="email"
-                    input="email"
+                    input ="email"
                     value={this.state.email}
                     onChange={event => this.setState({ email: event.target.value })}
                   />

@@ -11,3 +11,23 @@
 //   const p = wrapper.find('form');
 //   expect(p.text()).toBe('name');
 // });
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Forma from './Form';
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<Forma />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+test('onPress gets called with the right thing', () => {
+  const handleAgeFieldChange = jest.fn();
+  simulatePresses(handleAgeFieldChange);
+  expect(handleAgeFieldChange).toBeCalledWith(
+    expect.objectContaining({
+      field: expect.any(Number),
+      event: expect.any(Number),
+    }),
+  );
+});

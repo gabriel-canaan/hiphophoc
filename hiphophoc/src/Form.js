@@ -18,8 +18,12 @@ class Forma extends Component {
   onSubmit = async event => {
     event.preventDefault();
     this.setState;
-
   }
+
+  handleAgeFieldChange = (field, event) => {
+  event.preventDefault();
+  this.setState({ [field]: event.target.value });
+};
 
   render() {
     return (
@@ -77,6 +81,7 @@ class Forma extends Component {
               <Grid.Column width={8}>
               <Card.Group>
                 <Card fluid header={`${this.state.name}` || "name"} />
+                <Card fluid header={`${this.state.age}` || "age"} />
                 <Card fluid header={`${this.state.email}` || "email"} />
               </Card.Group>
             </Grid.Column>

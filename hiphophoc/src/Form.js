@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form,Button,Input,Grid,Container } from "semantic-ui-react";
+import { Form,Button,Input,Grid,Container, Card } from "semantic-ui-react";
 
 class Forma extends Component {
   constructor(props) {
@@ -46,6 +46,12 @@ class Forma extends Component {
                 </Button>
                 </Form>
               </Grid.Column>
+              <Grid.Column width={8}>
+              <Card.Group>
+                <Card fluid header={`${this.state.name}` || "name"} />
+                <Card fluid header={`${this.state.email}` || "email"} />
+              </Card.Group>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>

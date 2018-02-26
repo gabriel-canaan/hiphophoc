@@ -19,11 +19,17 @@ const HOC = (Forma) => class extends Component {
   componentWillMount() {
     console.log('dave');
   }
+  
+  componentDidMount() {
+    this.setState();
+  };
 
   render() {
     return (<Forma {...this.props} {...this.state}/>)
   }
 }
+
+// -----------------------------------------------------------
 
 class App extends Component {
   render() {
@@ -34,17 +40,19 @@ class App extends Component {
   }
 }
 
+//---------------------------------------------------------------
+
 const Submit = HOC((props) => <Button type="submit">
 </Button>)
+
+
+//-----------------------------------------------------------------
 
 class Forma extends Component {
   componentWillMount() {
     console.log('papa');
   }
 
-  componentDidMount() {
-    this.setState();
-  };
 
 
   componentWillUpdate(nextProps, nextState) {

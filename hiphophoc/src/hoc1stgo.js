@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import { Form,Button,Input,Grid,Container, Card } from "semantic-ui-react";
+import React, {Component} from 'react';
+import {Form,Button,Input,Grid,Container,Card,Label} from "semantic-ui-react";
 import ageCalculator, { AgeFromDate } from "age-calculator";
 var getAge = require('get-age');
 
-class Forma extends Component {
-  constructor(props) {
-    super(props);
-
+const HOC = (Forma) => class extends Component {
+  constructor() {
+    super();
     this.state = {
       name: "",
       dd: "",
@@ -15,6 +14,32 @@ class Forma extends Component {
       age: "",
       email: ""
     };
+  }
+
+  componentWillMount() {
+    console.log('dave');
+  }
+
+  render() {
+    return (<Forma {...this.props} {...this.state}/>)
+  }
+}
+
+class App extends Component {
+  render() {
+    return (<div className="App">
+      <Submit>Submit</Submit>
+      <FormaHOC>bghfsd</FormaHOC>
+    </div>);
+  }
+}
+
+const Submit = HOC((props) => <Button type="submit">
+</Button>)
+
+class Forma extends Component {
+  componentWillMount() {
+    console.log('papa');
   }
 
   componentDidMount() {
@@ -55,8 +80,7 @@ class Forma extends Component {
   };
 
   render() {
-    return (
-      <Container style={{ marginTop: 20 }}>
+    return (  <Container style={{ marginTop: 20 }}>
           <Grid divided="vertically">
             <Grid.Row columns={2}>
               <Grid.Column width={8}>
@@ -102,9 +126,6 @@ class Forma extends Component {
                     value={this.state.email}
                     onChange={event => this.setState({ email: event.target.value })}
                   />
-                  <Button type="submit" onClick={this.onSubmit}>
-                  Submit
-                </Button>
                 </Form>
               </Grid.Column>
               <Grid.Column width={8}>
@@ -119,7 +140,6 @@ class Forma extends Component {
       </Container>
     );
   }
-
 }
-
-export default Forma;
+const FormaHOC = HOC(Forma)
+export default App;

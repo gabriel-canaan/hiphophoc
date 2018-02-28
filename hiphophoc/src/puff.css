@@ -1,9 +1,38 @@
-.form-input {
-  background-color: blue;
-  color: white;
+#Dislazaru {
+  height: 46px;
+  width: 294px;
+  border-radius: 22.8px;
+  background-color: #F38181;
+  color: #FFFFFF;
 }
 
-.form-display {
-  background-color: pink;
-  color: white;
+#Subtubbs {
+  height: 46px;
+  width: 331px;
+  border-radius: 22.8px;
+  background-color: #F38181;
+}
+
+#Indave {
+  font: SF UI Text;
+  height: 46px;
+  width: 331px;
+  border-radius: 22.8px;
+  background-color: #232425;
+  color: #FFFFFF;
+}
+
+#Segpauline {
+  background-color: #000000 !important;
+}
+
+#Bacmickey {
+  height: 326px;
+  width: 331px;
+  border-radius: 11px;
+  background-color: #FFFFFF;
+}
+
+body {
+  background-color: #000000 !important;
 }

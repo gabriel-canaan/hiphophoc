@@ -39,7 +39,7 @@ class App extends Component {
 
 // ---------------------------------------------------------------
 
-const Submit = HOC(props => <Button fluid="fluid" type="submit">Submit</Button>);
+const Submit = HOC(props => <Button fluid type="submit" id="Subtubbs" >Submit</Button>);
 
 // -----------------------------------------------------------------
 
@@ -76,11 +76,11 @@ class Forma extends Component {
     email: ""
   })
 
-  // saveFields = () => {
-  //   const {name, age, email} = this.state
-  //   this.setState({submittedName: name, submittedAge: age, submittedEmail: email})
-  //
-  // }
+  saveFields = () => {
+    const {displayName, displayAge, displayEmail} = this.state
+    this.setState({displayName: this.state.name, displayAge: this.state.age, displayEmail: this.state.email})
+
+  }
 
   calculateAge = (yyyy, mm, dd) => {
     let ageFromDate = new AgeFromDate(new Date(yyyy, mm, dd)).age;
@@ -104,36 +104,43 @@ class Forma extends Component {
       <Grid divided="vertically">
         <Grid.Row columns={2}>
           <Grid.Column width={8}>
-            <Segment>
+            <Segment id="Segpauline">
               <Form onSubmit={this.clearFields}>
-                <Form.Input className="form-input" placeholder="name" required="required" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
-                <Form.Input fluid="fluid" placeholder='Example(Sean Puffy Combs)' readOnly="readOnly"/>
+                <Form.Input id="Indave" placeholder="name" required value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
+                <Form.Input fluid id="Indave" placeholder='Example(Sean Puffy Combs)' readOnly="readOnly"/>
                 <Grid divided="vertically">
                   <Grid.Row columns={3}>
                     <Grid.Column>
-                      <Form.Input className="form-input" placeholder="dd" required="required" input="number" max='31' value={this.state.dd} onChange={event => this.handleAgeFieldChange("dd", event)}/>
+                      <Form.Input id="Indave" placeholder="dd" required input="number" max='31' value={this.state.dd} onChange={event => this.handleAgeFieldChange("dd", event)}/>
                     </Grid.Column>
 
                     <Grid.Column>
-                      <Form.Input className="form-input" placeholder="mm" required="required" input="number" max='12' value={this.state.mm} onChange={event => this.handleAgeFieldChange("mm", event)}/>
+                      <Form.Input id="Indave" placeholder="mm" required input="number" max='12' value={this.state.mm} onChange={event => this.handleAgeFieldChange("mm", event)}/>
                     </Grid.Column>
 
                     <Grid.Column>
-                      <Form.Input className="form-input" placeholder="yyyy" required="required" input="number" value={this.state.yyyy} onChange={event => this.handleAgeFieldChange("yyyy", event)}/>
+                      <Form.Input id="Indave" placeholder="yyyy" required input="number" value={this.state.yyyy} onChange={event => this.handleAgeFieldChange("yyyy", event)}/>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
-                <Form.Input className="form-input" placeholder="email@domain.com" input="email" value={this.state.email} onChange={event => this.setState({email: event.target.value})}/>
-                <Submit onClick={this.onSubmit}>Submit</Submit>
+                <Form.Input id="Indave" placeholder="email@domain.com" input="email" value={this.state.email} onChange={event => this.setState({email: event.target.value})}/>
+                <Submit
+                   onClick={this.onSubmit}>Submit</Submit>
               </Form>
             </Segment>
           </Grid.Column>
           <Grid.Column width={8}>
-            <Segment>
-              <Form size={'massive'} key={'massive'}>
-                <Form.Input fluid="fluid" className="form-display" placeholder={`${this.state.name}` || "name"} readOnly="readOnly"/>
-                <Form.Input fluid="fluid" className="form-display" placeholder={`${this.state.age}` || "age"} readOnly="readOnly"/>
-                <Form.Input fluid="fluid" className="form-display" placeholder={`${this.state.email}` || "email"} readOnly="readOnly"/>
+            <Segment id="Bacmickey">
+              <Form size={'large'} key={'large'} onSubmit={this.saveFields}>
+                <Form.Input  id="Dislazaru"
+                  label='name'
+                  placeholder={`${this.state.name}` || `${this.props.displayName}`} readOnly="readOnly"/>
+                <Form.Input id="Dislazaru"
+                  label='age'
+                  placeholder={`${this.state.age}` || "age"} readOnly="readOnly"/>
+                <Form.Input id="Dislazaru"
+                  label='email'
+                  placeholder={`${this.state.email}` || "email"} readOnly="readOnly"/>
               </Form>
             </Segment>
           </Grid.Column>

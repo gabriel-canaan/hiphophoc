@@ -1,4 +1,9 @@
 .form-input {
-  background-color: #F38181;
-  font-style: italic;
+  background-color: blue;
+  color: white;
+}
+
+.form-display {
+  background-color: pink;
+  color: white;
 }

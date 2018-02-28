@@ -1,42 +1,36 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import './puff.css'
 import {
   Form,
   Button,
-  Input,
   Grid,
   Container,
-  Card,
-  Label
 } from "semantic-ui-react";
-import ageCalculator, { AgeFromDate } from "age-calculator";
-var getAge = require("get-age");
+// import 'semantic-ui-css/semantic.min.css';
+import {AgeFromDate} from "age-calculator";
+// var getAge = require("get-age");
 
-const HOC = Forma =>
-  class extends Component {
-    constructor() {
-      super();
-      this.state = {
-        name: "",
-        dd: "",
-        mm: "",
-        yyyy: "",
-        age: "",
-        email: ""
-      };
-    }
+const HOC = Forma => class extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      dd: "",
+      mm: "",
+      yyyy: "",
+      age: "",
+      email: ""
+    };
+  }
 
-    componentWillMount() {
-      console.log("dave");
-    }
+  componentDidMount() {
+    this.setState();
+  }
 
-    componentDidMount() {
-      this.setState();
-    }
-
-    render() {
-      return <Forma {...this.props} stuff={this.state} />;
-    }
-  };
+  render() {
+    return <Forma {...this.props} stuff={this.state}/>;
+  }
+};
 
 // -----------------------------------------------------------
 
@@ -50,11 +44,11 @@ class App extends Component {
   }
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 
 const Submit = HOC(props => <Button type="submit">Submit</Button>);
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 class Forma extends Component {
 
@@ -63,10 +57,6 @@ class Forma extends Component {
     this.state = {
       ...props.stuff
     }
-  }
-
-  componentWillMount() {
-    console.log("papa");
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -81,7 +71,15 @@ class Forma extends Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    this.setState;
+    // this.setState;
+    this.setState({
+      name: "",
+      dd: "",
+      mm: "",
+      yyyy: "",
+      age: "",
+      email: ""
+    })
   };
 
   calculateAge = (yyyy, mm, dd) => {
@@ -96,81 +94,77 @@ class Forma extends Component {
 
   handleAgeFieldChange = (field, event) => {
     event.preventDefault();
-    this.setState({ [field]: event.target.value });
+    this.setState({[field]: event.target.value});
   };
 
   render() {
-    return (
-      <Container style={{ marginTop: 20 }}>
-        <Grid divided="vertically">
-          <Grid.Row columns={2}>
-            <Grid.Column width={8}>
-              <Form>
-                <Form.Input
-                  className="form"
-                  placeholder="name"
-                  value={this.state.name}
-                  onChange={event =>
-                    this.setState({ name: event.target.value })
-                  }
-                />
-                <Grid divided="vertically">
-                  <Grid.Row columns={3}>
-                    <Grid.Column>
-                      <Form.Input
-                        placeholder="dd"
-                        required
-                        value={this.state.dd}
-                        onChange={event =>
-                          this.handleAgeFieldChange("dd", event)
-                        }
-                      />
-                    </Grid.Column>
+    return (<Container style={{marginTop: 20}}>
+      <Grid divided="vertically">
+        <Grid.Row columns={2}>
+          <Grid.Column width={8}>
+            <Form>
+              <Form.Input
+                className="form-input"
+                placeholder="name"
+                required
+                value={this.state.name}
+                onChange={event => this.setState({name: event.target.value})}/>
+                <Form.Input fluid placeholder='Example(Sean Puffy Combs)' readOnly />
+              <Grid divided="vertically">
+                <Grid.Row columns={3}>
+                  <Grid.Column>
+                    <Form.Input
+                      className="form-input"
+                      placeholder="dd"
+                      required
+                      input="number"
+                      max='31'
+                      value={this.state.dd}
+                      onChange={event => this.handleAgeFieldChange("dd", event)}/>
+                  </Grid.Column>
 
-                    <Grid.Column>
-                      <Form.Input
-                        placeholder="mm"
-                        value={this.state.mm}
-                        onChange={event =>
-                          this.handleAgeFieldChange("mm", event)
-                        }
-                      />
-                    </Grid.Column>
+                  <Grid.Column>
+                    <Form.Input
+                      className="form-input"
+                      placeholder="mm"
+                      required
+                      input="number"
+                      max='12'
+                      value={this.state.mm}
+                      onChange={event => this.handleAgeFieldChange("mm", event)}/>
+                  </Grid.Column>
 
-                    <Grid.Column>
-                      <Form.Input
-                        placeholder="yyyy"
-                        value={this.state.yyyy}
-                        onChange={event =>
-                          this.handleAgeFieldChange("yyyy", event)
-                        }
-                      />
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-                <Form.Input
-                  className="form"
-                  placeholder="email"
-                  input="email"
-                  value={this.state.email}
-                  onChange={event =>
-                    this.setState({ email: event.target.value })
-                  }
-                />
-                <Submit>Submit</Submit>
-              </Form>
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Card.Group>
-                <Card fluid header={`${this.state.name}` || "name"} />
-                <Card fluid header={`${this.state.age}` || "age"} />
-                <Card fluid header={`${this.state.email}` || "email"} />
-              </Card.Group>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    );
+                  <Grid.Column>
+                    <Form.Input
+                      className="form-input"
+                      placeholder="yyyy"
+                      required
+                      input="number"
+                      value={this.state.yyyy}
+                      onChange={event => this.handleAgeFieldChange("yyyy", event)}/>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+              <Form.Input
+                className="form-input"
+                placeholder="email"
+                input="email"
+                value={this.state.email}
+                onChange={event => this.setState({email: event.target.value})}/>
+              <Submit onClick={this.onSubmit}>Submit</Submit>
+            </Form>
+          </Grid.Column>
+          <Grid.Column width={8}>
+          <Form>
+              <Form.Input fluid placeholder={`${this.state.name}` || "name"} readOnly />
+              <Form.Input fluid
+                placeholder={`${this.state.age}` || "age"} readOnly />
+              <Form.Input fluid placeholder={`${this.state.email}` || "email"} readOnly />
+            </Form>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Container>);
   }
 }
 const FormaHOC = HOC(Forma);

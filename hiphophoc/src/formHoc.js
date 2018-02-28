@@ -3,7 +3,7 @@ import './puff.css'
 import {Form, Button, Grid, Segment, Container} from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 import {AgeFromDate} from "age-calculator";
-// var getAge = require("get-age");
+import {getAge} from "get-age";
 
 const HOC = Forma => class extends Component {
   constructor() {
@@ -39,7 +39,7 @@ class App extends Component {
 
 // ---------------------------------------------------------------
 
-const Submit = HOC(props => <Button fluid type="submit" id="Subtubbs" >Submit</Button>);
+const Submit = HOC(props => <Button fluid type="submit" id="submit-button" >Submit</Button>);
 
 // -----------------------------------------------------------------
 
@@ -88,7 +88,7 @@ class Forma extends Component {
   };
 
   // calculateAge = (yyyy, mm, dd) => {
-  //   let getAge = new getAge(yyyy, mm, dd);
+  //   let getAge = getAge(yyyy, mm, dd);
   //   return getAge;
   // };
 
@@ -104,41 +104,41 @@ class Forma extends Component {
       <Grid divided="vertically">
         <Grid.Row columns={2}>
           <Grid.Column width={8}>
-            <Segment id="Segpauline">
+            <Segment id="input-segment">
               <Form onSubmit={this.clearFields}>
-                <Form.Input id="Indave" placeholder="name" required value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
-                <Form.Input fluid id="Indave" placeholder='Example(Sean Puffy Combs)' readOnly="readOnly"/>
+                <Form.Input id="input-fields" placeholder="name" required value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
+                <Form.Input fluid id="input-fields" placeholder='Example(Sean Puffy Combs)' readOnly="readOnly"/>
                 <Grid divided="vertically">
                   <Grid.Row columns={3}>
                     <Grid.Column>
-                      <Form.Input id="Indave" placeholder="dd" required input="number" max='31' value={this.state.dd} onChange={event => this.handleAgeFieldChange("dd", event)}/>
+                      <Form.Input id="input-fields" placeholder="dd" required input="number" max='31' value={this.state.dd} onChange={event => this.handleAgeFieldChange("dd", event)}/>
                     </Grid.Column>
 
                     <Grid.Column>
-                      <Form.Input id="Indave" placeholder="mm" required input="number" max='12' value={this.state.mm} onChange={event => this.handleAgeFieldChange("mm", event)}/>
+                      <Form.Input id="input-fields" placeholder="mm" required input="number" max='12' value={this.state.mm} onChange={event => this.handleAgeFieldChange("mm", event)}/>
                     </Grid.Column>
 
                     <Grid.Column>
-                      <Form.Input id="Indave" placeholder="yyyy" required input="number" value={this.state.yyyy} onChange={event => this.handleAgeFieldChange("yyyy", event)}/>
+                      <Form.Input id="input-fields" placeholder="yyyy" required input="number" value={this.state.yyyy} onChange={event => this.handleAgeFieldChange("yyyy", event)}/>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
-                <Form.Input id="Indave" placeholder="email@domain.com" input="email" value={this.state.email} onChange={event => this.setState({email: event.target.value})}/>
+                <Form.Input id="input-fields" placeholder="email@domain.com" input="email" value={this.state.email} onChange={event => this.setState({email: event.target.value})}/>
                 <Submit
-                   onClick={this.onSubmit}>Submit</Submit>
+                  fluid onClick={this.onSubmit}>Submit</Submit>
               </Form>
             </Segment>
           </Grid.Column>
           <Grid.Column width={8}>
-            <Segment id="Bacmickey">
+            <Segment id="iplay-segment">
               <Form size={'large'} key={'large'} onSubmit={this.saveFields}>
-                <Form.Input  id="Dislazaru"
+                <Form.Input  id="display-fields"
                   label='name'
-                  placeholder={`${this.state.name}` || `${this.props.displayName}`} readOnly="readOnly"/>
-                <Form.Input id="Dislazaru"
+                  placeholder={`${this.state.name}` || "name"} readOnly="readOnly"/>
+                <Form.Input id="display-fields"
                   label='age'
                   placeholder={`${this.state.age}` || "age"} readOnly="readOnly"/>
-                <Form.Input id="Dislazaru"
+                <Form.Input id="display-fields"
                   label='email'
                   placeholder={`${this.state.email}` || "email"} readOnly="readOnly"/>
               </Form>

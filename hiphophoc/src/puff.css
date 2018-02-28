@@ -1,4 +1,4 @@
-#Dislazaru {
+#display-fields {
   height: 46px;
   width: 294px;
   border-radius: 22.8px;
@@ -6,14 +6,13 @@
   color: #FFFFFF;
 }
 
-#Subtubbs {
+#submit-button {
   height: 46px;
-  width: 331px;
   border-radius: 22.8px;
   background-color: #F38181;
 }
 
-#Indave {
+#input-fields {
   font: SF UI Text;
   height: 46px;
   width: 331px;
@@ -22,11 +21,11 @@
   color: #FFFFFF;
 }
 
-#Segpauline {
+#input-segment {
   background-color: #000000 !important;
 }
 
-#Bacmickey {
+#diplay-segment {
   height: 326px;
   width: 331px;
   border-radius: 11px;

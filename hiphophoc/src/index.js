@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './puff.css'
-import App from './hoc1stgo';
+import App from './formHoc';
 
 import registerServiceWorker from './registerServiceWorker';
 
